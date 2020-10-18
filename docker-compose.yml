@@ -1,0 +1,50 @@
+version: '3.4'
+# example for 2 deployments of
+# https://hub.docker.com/r/octoprint/octoprint
+
+services:
+  octoprint1:
+    image: octoprint/octoprint
+    restart: unless-stopped
+    ports:
+      - "8001:80"
+
+    devices:
+      - /dev/ttyUSB0:/dev/ttyUSB0
+    # - /dev/video0:/dev/video0
+    volumes:
+     - ./octoprint1:/octoprint
+    # uncomment the lines below to ensure camera streaming is enabled when
+    # you add a video device
+    #environment:
+    #  - ENABLE_MJPG_STREAMER=true
+
+  octoprint2:
+    image: octoprint/octoprint
+    restart: unless-stopped
+    ports:
+      - "8002:80"
+    devices:
+     - /dev/ttyUSB1:/dev/ttyUSB1
+    # - /dev/video0:/dev/video0
+    volumes:
+     - ./octoprint2:/octoprint
+    # uncomment the lines below to ensure camera streaming is enabled when
+    # you add a video device
+    #environment:
+    #  - ENABLE_MJPG_STREAMER=true
+
+  octoprint3:
+    image: octoprint/octoprint
+    restart: unless-stopped
+    ports:
+      - "8003:80"
+    devices:
+     - /dev/ttyUSB2:/dev/ttyUSB2
+    # - /dev/video0:/dev/video0
+    volumes:
+     - ./octoprint3:/octoprint
+    # uncomment the lines below to ensure camera streaming is enabled when
+    # you add a video device
+    #environment:
+    #  - ENABLE_MJPG_STREAMER=true
