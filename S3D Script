@@ -1,0 +1,1 @@
+curl -k -H "X-Api-Key: <YOUR API KEY>" -F "select=false" -F "print=true" -F "file=@[output_filepath]" "http://<YOUR RPI IP>:<SPECIFIC OCTOPRINT PORT>/api/files/local"
